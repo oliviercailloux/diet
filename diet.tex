@@ -1,0 +1,117 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[version=3.21, pagesize, twoside=off, bibliography=totoc, DIV=calc, fontsize=12pt, a4paper]{scrartcl}
+\input{preamble/packages}
+\input{preamble/redac}
+\input{preamble/math_basics}
+\input{preamble/math_mine}
+%\input{preamble/acronyms}
+
+%I find these settings useful in draft mode. Should be removed for final versions.
+	%Which line breaks are chosen: accept worse lines, therefore reducing risk of overfull lines. Default = 200.
+		\tolerance=2000
+	%Accept overfull hbox up to...
+		\hfuzz=2cm
+	%Reduces verbosity about the bad line breaks.
+		\hbadness 5000
+	%Reduces verbosity about the underful vboxes.
+		\vbadness=1300
+
+\title{Deliberated diet}
+\author{Olivier Cailloux}
+\author{Yves Meinard}
+\affil{Université Paris-Dauphine, PSL Research University, CNRS, LAMSADE, 75016 PARIS, FRANCE}
+\author{Nicolas Salliou}
+\affil{Affiliation}
+\hypersetup{
+	pdfsubject={},
+	pdfkeywords={},
+}
+\begin{document}
+\maketitle
+
+\section{Question}
+\label{sec:question}
+We want a practical and concrete question in a fictitious, precise setting. Here is a proposal.
+
+In a fictitious place, a local authority considers building a new public cantine. Should this cantine propose only vegan food?
+\begin{enumerate}
+	\item \label{it:vegan} It should propose only vegan food on each of the five days per week that it is open
+	\item \label{it:four} It should propose only vegan food on four days a week and vegan and non-vegan choice on the remaining day
+	\item \label{it:one} Monday vegan
+	\item \label{it:zero} Every day choice
+\end{enumerate}
+Perhaps we should specify in the scenario whether a choice of only vegan food would result in higher quality food in some sense (as some readers could expect, because meat can be expensive)? Or specify that the budget is fixed?
+
+\section{Protocol}
+\label{sec:prot}
+Here is a possible protocol aiming to establish the content that will be played to the subject. This is a draft proposal open for discussion.
+
+Assume we have two champions, $C_a$ and $C_b$.
+
+We ask $C_a$ and $C_b$ for their favorite propositions, defined as $t_a$ and $t_b$ respectively (to choose among \cref{it:vegan,it:four,it:one,it:zero} as defined in \cref{sec:question}). Hopefully, we have chosen $C_a$ and $C_b$ so that $t_a$ and $t_b$ are at opposite ends of the spectrum.
+
+We ask $C_a$ to produce a video in favor of $t_a$, and label it $s_{1a}$. We send $s_{1a}$ to $C_a$. We give $C_b$ a choice: either produce a reply video (arguing for $t_b$ against the video arguing for $t_a$), or start a new thread in favor of $t_b$, or both. In the first case, we label the argument $s_{1ab}$. In the second case, we label the argument $s_{1b}$. We repeat this scheme ad nauseam. We also run a parallel scheme starting with $b$ instead of $a$.
+
+Here is a more precise description of the \textbf{collection} phase.
+
+\begin{itemize}
+	\item At the start of the whole procedure, both champions are fully informed about the procedure and the future use of their arguments, including about the time constraints (effectively as if they received a copy of this whole document, except possibly with a different form more suitable for easy understanding of their role).
+	\item The naming scheme is such that the last letter of a video indicate the author.
+	\item Define $\text{init}(\alpha)$, with $\alpha \in \set{a, b}$, as follows. Precondition: $C_\alpha$ has received no argument of any sort from her opponent. We ask $C_\alpha$ to produce a video in favor of $t_\alpha$, and label the resulting video $s_{1 \alpha}$.
+	\item Define $\text{next}(\alpha)$, with $\alpha \in \set{a, b}$, as one plus the greatest integer numbering a start video recorded by $\alpha$ in the whole process so far. For example, if $\alpha = b$, and if a video labeled $s_{3b}$ exists already but no video labeled $s_{4b}$ exists yet, then $\text{next}(b) = 4$.
+	\item Define $\text{reply}(S)$, with $S$ a set of previously produced videos by a given champion $\alpha$, as follows. We address the champion $\beta$, with $\beta ≠ \alpha$. We send her the videos in $S$. About one week later, we meet her and let her reply to every videos she wants to reply to by recording new videos. A video replying to another video is labeled by suffixing $\beta$ to the label of the video it replies to. For example, if $\alpha = a$, when replying to a video labeled $s_{1aba}$, we label it $s_{1abab}$. The set of replies may be empty. She may also start a new video that is not a reply, that we name $s_{k\beta}$, with $k$ equal to $\text{next}(\beta)$.
+	\item We start with $\text{init}(a)$ and $\text{init}(b)$ in parallel, therefore obtaining $s_{1a}$ and $s_{1b}$. Define $S_{1a} = \set{s_{1a}}$ and $S_{1b} = \set{s_{1b}}$.
+	\item After having obtained a set of videos $S$, if $S ≠ \emptyset$, we run $\text{reply}(S)$, and label the set of resulting videos by suffixing the identifier of their author to the label of $S$. 
+	\item We repeat the previous step, running two threads in parallel whenever possible, until we exhaust both participants.
+	\item When both participants have finished producing videos, we ask them to label briefly (max. $x$ words, TBD) each of their own videos and select an image from the video that becomes its “thumbnail”.
+\end{itemize}
+
+\begin{example}
+Here is an example run.
+\begin{enumerate}
+	\item We start with $\text{init}(a)$ and $\text{init}(b)$ in parallel and obtain $s_{1a}$ and $s_{1b}$. Define $S_{a} = \set{s_{1a}}$ and $S_{b} = \set{s_{1b}}$.
+	\item We apply $\text{reply}(\set{s_{1a}})$ and obtain $S_{ab} = \set{s_{1ab}, s_{2b}}$.
+	\item In parallel, we apply $\text{reply}(\set{s_{1b}})$ and obtain $S_{ba} = \set{s_{1ba}}$.
+	\item We apply $\text{reply}(S_{ab})$ (as soon as $S_{ab}$ is available) and obtain $S_{aba} = \set{s_{1aba}, s_{2ba}, s_{2a}}$.
+	\item We apply $\text{reply}(S_{ba})$ (as soon as $S_{ba}$ is available), but $C_b$ sees no need to answer those ridiculous arguments; we obtain $S_{bab} = \emptyset$.
+	\item We apply $\text{reply}(S_{aba})$ (as soon as $S_{aba}$ is available), where $C_b$ sees an opportunity for answering; we obtain $S_{abab} = \set{s_{2bab}}$.
+	\item We apply $\text{reply}(S_{abab})$ (as soon as the argument is available), $C_a$ is really fed up with all this circus, and we obtain $S_{ababa} = \emptyset$.
+\end{enumerate}
+\end{example}
+
+When the collection phase is over, we start the \textbf{adjudicating} phase. We pick an individual $i$. The individual has previously reported to us that he does not have a fixed opinion on the matter of vegan diet (?). The individual $i$ is explained by written text (?) that his informed opinon is asked, is explained that two well-known public figures have argued for two options, is explained the context and shown the possible choices, and is asked to spend 60 minutes watching videos from author $a$ and 60 minutes from $b$ to form an opinion, explaining that this permits to give a fair chance to both authors to defend their point of view. 
+\begin{itemize}
+	\item The phase is composed of \textbf{steps}. Each step starts with an associated set of videos “proposed”, $S_P$, and an associated list of videos “seen”, $S_S$. The list $S_S$ is possibly augmented at the end of each step while the set $S_P$ is computed at the start of each step from the list $S_S$ resulting from the previous step.
+	\item At the start, $S_S = \emptyset$.
+	\item A “step” consists in the set $S_P$ being shown to the individual among which he can choose the video he will watch during this step; and he can also watch again videos that are “seen”. Each video is displayed as its thumbnail, with its label shown clearly, in a randomized order; the videos from $S_S$ are clearly distinguished and displayed afterwards, in the order they have entered the list (the order they have been marked as “seen”). He clicks on a video and starts watching it. 
+He can navigate in the timeline of the video (a la youtube).
+The step is finished with one of these possibilities.
+	\begin{itemize}
+		\item If the video is watched until the end with no navigation in the timeline, in which case the video is added at the end of $S_S$. 
+		\item The user can also click to mark the video as seen without having watched it entirely, in which case the video is also added at the end of $S_S$.
+		\item The user can also click to stop the video without marking it as seen; in which case $S_S$ is not modified.
+	\end{itemize}
+	\item Given a video $s$, define $r(s)$ as the singleton set containing the reply video to $s$ (thus produced by the other champion than the author of $s$), if such a video exists, and $\emptyset$ otherwise. For example, $r(s_{2aba}) = \set{s_{2abab}}$ if such a video exists. At the start of a step where the list of videos seen is $S_S$, $S_P$ is defined as the non-seen videos among the starting videos and the videos replying to a video that has been seen, thus, $S_P = \left(\set{s_{k\alpha}, k \in \N, \alpha \in \set{a, b}} \cup \bigcup_{s \in S_S} r(s)\right) \setminus S_S$.
+	\item We also count the total time spent watching videos from each author. We count the time really spent playing a video, including replays when $i$ has watched several times the same (part of a) video, and thus not counting fully a video that has been partly watched, even if the video has been included in $S_S$ because of an explicit demand from $i$. When the time allowed to one author has been reached, $i$ may watch only videos from the other author, thus the videos from the first author are not included any more into $S_P$. If a video is being watched when the time limit is reached, the video stops. (The individual is shown the remaining time at each moment so this will not be a surprise.)
+\end{itemize}
+The individual $i$ may stop watching videos before having spent all the allowed time.
+
+The individual is the asked to choose an answer to the question asked at the start.
+
+\section{Think}
+\begin{itemize}
+	\item Should we let the champions decide which videos they keep? (They might think that some of their videos are much better than others.)
+	\item Once the choice is done, the individual is asked to report which videos were most convincing to him? Asked to select a set of videos that he would propose would be displayed to other individuals to help them deliberate about the issue?
+	\item Cx peut choisir combien de c-a il propose, et la longueur de tous les argumentaires.
+	\item OU i ne peut pas naviguer librement ? On donne un budget temps à chaque C et on navigue avec de l’aléa.
+	\item Penser au risque que Cx en ait marre (ou pense perdre le débat) et refuse qu’on utilise le matériel produit jusque là.
+\end{itemize}
+
+Objectifs : 
+\begin{itemize}
+	\item l’effet du dispositif sur l’avis de la personne ; leur satisfaction
+	\item est-ce qu’on peut raisonnablement dire qu’on a capturé le DJ ? Par exemple, sa position est-elle stable face à des arguments puisés dans une BD ? On pourrait comparer l’affirmation de stabilité sans protocole, ou après le protocole. Ou on pourrait comparer notre protocole à un autre et voir lequel amène à une position stable (donc proche du DJ).
+	\item Determine and validate a procedure to build CAC models?
+\end{itemize}
+\end{document}
+
