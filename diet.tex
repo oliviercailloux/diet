@@ -48,15 +48,16 @@ Here is a possible protocol aiming to establish the content that will be played 
 
 Assume we have two champions, $C_a$ and $C_b$.
 
+\subsection{Collection phase}
 We ask $C_a$ and $C_b$ for their favorite propositions, defined as $t_a$ and $t_b$ respectively (to choose among \cref{it:vegan,it:four,it:one,it:zero} as defined in \cref{sec:question}). Hopefully, we have chosen $C_a$ and $C_b$ so that $t_a$ and $t_b$ are at opposite ends of the spectrum.
 
 We ask $C_a$ to produce a video in favor of $t_a$, and label it $s_{1a}$. We send $s_{1a}$ to $C_a$. We give $C_b$ a choice: either produce a reply video (arguing for $t_b$ against the video arguing for $t_a$), or start a new thread in favor of $t_b$, or both. In the first case, we label the argument $s_{1ab}$. In the second case, we label the argument $s_{1b}$. We repeat this scheme ad nauseam. We also run a parallel scheme starting with $b$ instead of $a$.
 
-Here is a more precise description of the \textbf{collection} phase.
+Here is a more precise description of the collection phase.
 
 \begin{itemize}
 	\item At the start of the whole procedure, both champions are fully informed about the procedure and the future use of their arguments, including about the time constraints (effectively as if they received a copy of this whole document, except possibly with a different form more suitable for easy understanding of their role).
-	\item The naming scheme is such that the last letter of a video indicate the author.
+	\item The naming scheme is such that the last letter of a video indicate its author.
 	\item Define $\text{init}(\alpha)$, with $\alpha \in \set{a, b}$, as follows. Precondition: $C_\alpha$ has received no argument of any sort from her opponent. We ask $C_\alpha$ to produce a video in favor of $t_\alpha$, and label the resulting video $s_{1 \alpha}$.
 	\item Define $\text{next}(\alpha)$, with $\alpha \in \set{a, b}$, as one plus the greatest integer numbering a start video recorded by $\alpha$ in the whole process so far. For example, if $\alpha = b$, and if a video labeled $s_{3b}$ exists already but no video labeled $s_{4b}$ exists yet, then $\text{next}(b) = 4$.
 	\item Define $\text{reply}(S)$, with $S$ a set of previously produced videos by a given champion $\alpha$, as follows. We address the champion $\beta$, with $\beta ≠ \alpha$. We send her the videos in $S$. About one week later, we meet her and let her reply to every videos she wants to reply to by recording new videos. A video replying to another video is labeled by suffixing $\beta$ to the label of the video it replies to. For example, if $\alpha = a$, when replying to a video labeled $s_{1aba}$, we label it $s_{1abab}$. The set of replies may be empty. She may also start a new video that is not a reply, that we name $s_{k\beta}$, with $k$ equal to $\text{next}(\beta)$.
@@ -78,8 +79,12 @@ Here is an example run.
 	\item We apply $\text{reply}(S_{abab})$ (as soon as the argument is available), $C_a$ is really fed up with all this circus, and we obtain $S_{ababa} = \emptyset$.
 \end{enumerate}
 \end{example}
+We put every collected video on a web site and design everything so that the second phase of the protocol (see below) can be run.
 
-When the collection phase is over, we start the \textbf{adjudicating} phase. We pick an individual $i$. The individual $i$ is explained by written text that his informed opinon is asked, is explained that two well-known public figures have argued for two options, is explained the context and shown the possible choices, and is asked to spend 60 minutes watching videos from author $a$ and 60 minutes from $b$ to form an opinion, explaining that this permits to give a fair chance to both authors to defend their point of view. 
+\subsection{Adjudication}
+When the collection phase is over, we start the adjudicating phase. An individual $i$ comes to our web site. 
+The individual $i$ is explained by written text that his deliberated opinon is asked, is explained that two well-known public figures have argued for two options, is explained the context and shown the possible choices, and is invited to spend as much time as he wants watching videos (without restriction of balancing the time spent for each champion) to form an opinion. 
+He must sign up, using an e-mail address, before he can start viewing the videos.
 \begin{itemize}
 	\item The phase is composed of \textbf{steps}. Each step starts with an associated set of videos “proposed”, $S_P$, and an associated list of videos “seen”, $S_S$. The list $S_S$ is possibly augmented at the end of each step while the set $S_P$ is computed at the start of each step from the list $S_S$ resulting from the previous step.
 	\item At the start, $S_S = \emptyset$.
@@ -89,29 +94,46 @@ The step is finished with one of these possibilities.
 	\begin{itemize}
 		\item If the video is watched until the end with no navigation in the timeline, in which case the video is added at the end of $S_S$. 
 		\item The user can also click to mark the video as seen without having watched it entirely, in which case the video is also added at the end of $S_S$.
-		\item The user can also click to stop the video without marking it as seen; in which case $S_S$ is not modified.
+		\item The user can also click to stop the video without marking it as seen; in which case $S_S$ is not modified and the video is added at the end of $S_T$.
 	\end{itemize}
 	\item Given a video $s$, define $r(s)$ as the singleton set containing the reply video to $s$ (thus produced by the other champion than the author of $s$), if such a video exists, and $\emptyset$ otherwise. For example, $r(s_{2aba}) = \set{s_{2abab}}$ if such a video exists. At the start of a step where the list of videos seen is $S_S$, $S_P$ is defined as the non-seen videos among the starting videos and the videos replying to a video that has been seen, thus, $S_P = \left(\set{s_{k\alpha}, k \in \N, \alpha \in \set{a, b}} \cup \bigcup_{s \in S_S} r(s)\right) \setminus S_S$.
-	\item We also count the total time spent watching videos from each author. We count the time really spent playing a video, including replays when $i$ has watched several times the same (part of a) video, and thus not counting fully a video that has been partly watched, even if the video has been included in $S_S$ because of an explicit demand from $i$. When the time allowed to one author has been reached, $i$ may watch only videos from the other author, thus the videos from the first author are not included any more into $S_P$. If a video is being watched when the time limit is reached, the video stops. (The individual is shown the remaining time at each moment so this will not be a surprise.)
+	\item At any time (except when watching a video in full-screen), $i$ sees how much time he has spent watching videos of each champion. (To gently push him towards balancing his view time between both champions.)
+	\item If $i$ interrupts and later comes back, he must log in again and he starts back at the step he was when we lost track of him.
 \end{itemize}
-The individual $i$ may stop watching videos before having spent all the allowed time.
+At each step, $i$ may click “questionaire” to go to the questionaire part. In this part he is informed that we suggest he answers these questions only after he has formed a deliberated opinion, but that he can anyway go back to the video part and come back to the questionaire whenever he wants and change his answers. The questionaire asks the following questions.
+\begin{itemize}
+	\item Which answer do you choose (referring to \cref{sec:question})?
+	\item Which answer would you have chosen if the question had been asked before you saw the videos?
+	\item Which videos did you find personally most convincing (may select videos from both champions)?
+	\item Which videos did you find most informative from champion $a$? From champion $b$?
+	\item Which videos would you select for displaying to other users to help them form a deliberated judgment about this question?
+	\item Do you consider that this is your final answer to the question, or do you consider it likely (possible?) that you would still change your mind if watching more videos?
+	\item Have you used other sources that the videos on this web site to form your judgment about this question after having heard about this question (referring to \cref{sec:question})?
+\end{itemize}
+For each of the “which videos” questions, he is shows the list of thumbnails of videos in $S_S$, followed by the thumnails of videos he has partially seen (but not marked as seen), and can check any thumnail he wants.
 
-The individual is then asked to choose an answer to the question asked at the start.
+\section{Analysis}
+\commentOC{I think it would be useful to think already now about some of the analysis that we will want to do, in order to ensure that our collection phase is appropriate and to document the programming of the adjudication phase.}
+\begin{itemize}
+	\item We count the total time spent watching videos from each champion. (Can we do this technically?) We count the time really spent playing a video, including replays when $i$ has watched several times the same (part of a) video, and thus not counting fully a video that has been partly watched, even if the video has been included in $S_S$ because of an explicit demand from $i$. This permits to count time allowed to each champion.
+	\item …?
+\end{itemize}
 
 \section{Think}
-\begin{itemize}
-	\item Should we let the champions decide which videos they keep? (They might think that some of their videos are much better than others.)
-	\item Once the choice is done, the individual is asked to report which videos were most convincing to him? Asked to select a set of videos that he would propose would be displayed to other individuals to help them deliberate about the issue?
-	\item Cx peut choisir combien de c-a il propose, et la longueur de tous les argumentaires.
-	\item OU i ne peut pas naviguer librement ? On donne un budget temps à chaque C et on navigue avec de l’aléa.
-	\item Penser au risque que Cx en ait marre (ou pense perdre le débat) et refuse qu’on utilise le matériel produit jusque là.
-\end{itemize}
+\begin{enumerate}
+	\item Should we grant the right to the champions to discard some of their videos at the end of the collection phase? Or promote some? (They might think that some of their videos are much better than others.)
+	\item We have to make sure $i$ understands that he will be proposed the “replies” videos only once he has marked the video as “seen”.
+	\item An alternative would be: the user is displayed the question at any time and is asked for his \emph{current} judgment about the best answer, and can change his answer after each video if desired. Something like: “which would be your current judgment about the best answer to this question at this point?”
+	\item An alternative: $i$ may at any starting step indicate that he has formed a deliberated judgment. At this step, we let him know that if he confirms, he will be brought to the questionaire part and that he will no longer be able to watch more videos until he has finished answering the questionaire.
+	\item An alternative: $i$ ne peut pas naviguer librement ? On donne un budget temps à chaque C et on navigue avec de l’aléa.
+	\item Yves a sans-doute raison sur le fait qu’il faudrait s’interroger concernant les compétences techniques de notre stagiaire pour le prototype (si on veut lui en faire faire un) : mettre des vidéos sur un site, c’est une chose, mais permettre le déroulement et le suivi de l’expérience précisément comme décrit ci-dessus, c’est une autre paire de manches. Cela requiert sans-doute de programmer. Ou on le charge d’une revue de la littérature associée ?
+\end{enumerate}
 
 Objectifs à l’issue de cette expérience : 
-\begin{itemize}
+\begin{enumerate}
 	\item l’effet du dispositif sur l’avis de la personne : analyser dans quelle mesure les gens changent d’avis
 	\item est-ce qu’on peut raisonnablement dire qu’on a capturé le DJ ? Par exemple, sa position est-elle stable face à des arguments puisés dans une BD ? On pourrait comparer l’affirmation de stabilité sans protocole, ou après le protocole. Ou on pourrait comparer notre protocole à un autre et voir lequel amène à une position stable (donc proche du DJ).
 	\item Determine and validate a procedure to build CAC models?
-\end{itemize}
+\end{enumerate}
 \end{document}
 
