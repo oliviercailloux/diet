@@ -40,7 +40,7 @@ In a fictitious place, a local authority considers building a new public cantine
 	\item \label{it:one} Monday vegan
 	\item \label{it:zero} Every day choice
 \end{enumerate}
-TODO ask to ppl knowledgeable in experiments how complete the description of the context should be: specify if the price end consumer price is fixed or depends on the choice of diet, if the funding from the state to the cantine will vary depending on the choice of diet, …
+How complete should the description of the context be? Specify if the price end consumer price is fixed or depends on the choice of diet, if the funding from the state to the cantine will vary depending on the choice of diet, … (We should pick some reasonable choice and not worry about it.)
 
 \section{Protocol}
 \label{sec:prot}
@@ -113,7 +113,7 @@ At each step, $i$ may click “questionaire” to go to the questionaire part. I
 For each of the “which videos” questions, he is shows the list of thumbnails of videos in $S_S$, followed by the thumnails of videos he has partially seen (but not marked as seen), and can check any thumnail he wants.
 
 \section{Analysis}
-\commentOC{I think it would be useful to think already now about some of the analysis that we will want to do, in order to ensure that our collection phase is appropriate and to document the programming of the adjudication phase.}
+\commentOC{We should think already now about some of the analysis that we will want to do, in order to ensure that our collection phase is appropriate and to document the programming of the adjudication phase.}
 \begin{itemize}
 	\item We count the total time spent watching videos from each champion. (Can we do this technically?) We count the time really spent playing a video, including replays when $i$ has watched several times the same (part of a) video, and thus not counting fully a video that has been partly watched, even if the video has been included in $S_S$ because of an explicit demand from $i$. This permits to count time allowed to each champion.
 	\item …?
@@ -125,8 +125,7 @@ For each of the “which videos” questions, he is shows the list of thumbnails
 	\item We have to make sure $i$ understands that he will be proposed the “replies” videos only once he has marked the video as “seen”.
 	\item An alternative would be: the user is displayed the question at any time and is asked for his \emph{current} judgment about the best answer, and can change his answer after each video if desired. Something like: “which would be your current judgment about the best answer to this question at this point?”
 	\item An alternative: $i$ may at any starting step indicate that he has formed a deliberated judgment. At this step, we let him know that if he confirms, he will be brought to the questionaire part and that he will no longer be able to watch more videos until he has finished answering the questionaire.
-	\item An alternative: $i$ ne peut pas naviguer librement ? On donne un budget temps à chaque C et on navigue avec de l’aléa.
-	\item Yves a sans-doute raison sur le fait qu’il faudrait s’interroger concernant les compétences techniques de notre stagiaire pour le prototype (si on veut lui en faire faire un) : mettre des vidéos sur un site, c’est une chose, mais permettre le déroulement et le suivi de l’expérience précisément comme décrit ci-dessus, c’est une autre paire de manches. Cela requiert sans-doute de programmer. Ou on le charge d’une revue de la littérature associée ?
+	\item We should introduce some random suggestions: some individuals are directed (more or less constrained) to some videos, so that we can analyze the result on the DJ depending on the path.
 \end{enumerate}
 
 Objectifs à l’issue de cette expérience : 
