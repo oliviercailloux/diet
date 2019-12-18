@@ -15,7 +15,7 @@ La proposition concerne un stage de Master 2 de trois à six mois, assorti de la
 
 Il aura lieu au printemps 2020 à l’Université Paris-Dauphine, au http://lamsade.dauphine.fr/[LAMSADE]. 
 
-Envoyer cv et lettre de motivation à Olivier Cailloux (olivier.cailloux@dauphine.fr), copies à Yves Meinard (yves.meinard@lamsade.dauphine.fr) et Nicolas Salliou (nsalliou@ethz.ch). Plus d’informations par ce même biais.
+Envoyer cv et lettre de motivation à mailto:olivier.cailloux@dauphine.fr[Olivier Cailloux], copies à mailto:yves.meinard@lamsade.dauphine.fr[Yves Meinard] et mailto:nsalliou@ethz.ch[Nicolas Salliou]. Plus d’informations par ce même biais.
 
 == Référence
 Cailloux, Olivier, and Yves Meinard. 2019. ‘A Formal Framework for Deliberated Judgment’. Theory and Decision. https://doi.org/10.1007/s11238-019-09722-7, https://arxiv.org/abs/1801.05644.
