@@ -52,11 +52,9 @@ In a fictitious place, a local authority considers building a new public cantine
 	\item \label{it:zero} It should propose vegan and non-vegan choice every day
 \end{enumerate}
 
-\section{Protocol}
-\label{sec:prot}
-Assume we have two champions, $C_a$ and $C_b$.
+From now on, assume we have two champions, $C_a$ and $C_b$.
 
-\subsection{Collection phase}
+\section{Collection phase}
 We ask $C_a$ and $C_b$ for their favorite propositions, defined as $t_a$ and $t_b$ respectively (to choose among \cref{it:vegan,it:four,it:one,it:zero} as defined in \cref{sec:topic}). Hopefully, we have chosen $C_a$ and $C_b$ so that $t_a$ and $t_b$ are at opposite ends of the spectrum.
 
 We ask $C_a$ to produce a video in favor of $t_a$, and label it $s_{1a}$. We send $s_{1a}$ to $C_b$. We give $C_b$ a choice: either produce a reply video (arguing for $t_b$ against the video arguing for $t_a$), or start a new thread in favor of $t_b$, or both. In the first case, we label the argument $s_{1ab}$. In the second case, we label the argument $s_{1b}$. The scheme is then repeated. We also run a parallel scheme starting with $b$ instead of $a$.
@@ -88,11 +86,12 @@ Here is an example run.
 \end{enumerate}
 \end{example}
 
-\subsection{Adjudication}
+\section{Adjudication phase}
 When the collection phase is over, we put every collected video on a web site and design everything so that the adjudication phase of the protocol can be run, as described in this section. This phase consists, for each visitor, in 
 
-An individual $i$ comes to our web site. This visitor has to go through the following two phases: \emph{context presentation} and \emph{deliberation}.
+An individual $i$ comes to our web site. This visitor has to go through the following two phases: \emph{context presentation} and \emph{constrained deliberation}; and can then optionally proceed to the \emph{free deliberation} phase.
 
+\subsection{Context presentation}
 In the context presentation phase, the visitor is explained the context of the study by written text. The following points should be made clear to the visitor.
 \begin{itemize}
 	\item We (the team designing the study) are interested in knowing what the visitor considers are the best arguments to form a deliberated judgment on this topic, as judged by himself. Our long-term goal is to help individuals form a well-informed opinion by displaying to them arguments that tend to be considered good by many individuals, taking into account only the quality of the argument and not on the stance that the argument supports.
@@ -105,9 +104,13 @@ In the context presentation phase, the visitor is explained the context of the s
 \end{itemize}
 Only after the visitor has accepted those conditions can he start the controlled deliberation phase. 
 
-During the deliberation phase, he can still access the explanations relating to the context presentation if he so desires, but it is not displayed prominently any more as we expect it will not be his main interest in that phase.
+\subsection{Constrained deliberation}
+During the constrained deliberation phase, he can still access the explanations relating to the context presentation if he so desires, but it is not displayed prominently any more as we expect it will not be his main interest in that phase.
 
-The deliberation phase is composed of \textbf{video steps} and \textbf{questionaire steps}. Here is the description of a video step.
+The constrained deliberation phase is composed of \textbf{video steps} and \textbf{questionaire steps}. 
+
+\subsubsection{Video step}
+Here is the description of a video step.
 \begin{itemize}
 	\item Each video step starts with an associated set of videos “proposed”, $S_P$, and an associated list of videos “seen”, $S_S$. The list $S_S$ is possibly augmented at the end of each step while the set $S_P$ is computed at the start of each step from the list $S_S$ resulting from the previous step. Two time counters $\theta_a$ and $\theta_b$ keep track of the time spent so far watching videos of each champion.
 	\item At the start, $S_S = \emptyset$; $\theta_a = 0$; $\theta_b = 0$.
@@ -124,6 +127,7 @@ The step is finished with one of these possibilities.
 	\item After 90 minutes have passed, $i$ is informed that the controlled deliberation phase is finished. \commentOC{Check how to count time. What if $i$ gets disconnected and comes back 10 minutes later?}
 \end{itemize}
 
+\subsubsection{Questionaire step}
 A questionaire step is defined as asking the following questions to $i$. \commentOC{New proposition. Previously: At each step, $i$ may click “questionaire” to go to the questionaire part. In this part he is informed that we suggest he answers these questions only after he has formed a deliberated opinion, but that he can anyway go back to the video part and come back to the questionaire whenever he wants and change his answers. I also removed several questions.}
 \commentOC{Decide how to alternate questionaire and video steps.}
 \begin{itemize}
@@ -134,6 +138,9 @@ A questionaire step is defined as asking the following questions to $i$. \commen
 	\item Which arguments do you think the other champion has not replied to convincingly? (free text answer) \commentOC{These two questions should be asked only at the end of the constrained deliberation phase?}
 \end{itemize}
 For each of the “which videos” questions, $i$ is shows the list of thumbnails of videos in $S_S$, followed by the thumnails of videos he has partially seen but not marked as seen, and can check any thumnail he wants, from both champions. \commentOC{Should (or can?) order the videos?}
+
+\subsection{Free deliberation}
+After the constrained deliberation phase, after having answered any final questionaire, the visitor can watch more videos. We continue sending her to some questionaire step from time to time. This phase is similar to the constrained deliberation phase, but with no time limit.
 
 \section{Analysis}
 \commentOC{We should think already now about some of the analysis that we will want to do, in order to ensure that our protocol is appropriate and to list the requirements on indicators collected during the adjudication phase.}
