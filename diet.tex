@@ -89,10 +89,10 @@ Here is an example run.
 \section{Adjudication phase}
 When the collection phase is over, we put every collected video on a web site and design everything so that the adjudication phase of the protocol can be run, as described in this section. This phase consists, for each visitor, in 
 
-An individual $i$ comes to our web site. This visitor has to go through the following two phases: \emph{context presentation} and \emph{constrained deliberation}; and can then optionally proceed to the \emph{free deliberation} phase.
+An individual $i$ comes to our web site. This visitor has to go through the following two sub-phases (and an optional third one): the \emph{context presentation} and the \emph{constrained deliberation} sub-phases; and can then optionally proceed to the \emph{free deliberation} sub-phase.
 
 \subsection{Context presentation}
-In the context presentation phase, the visitor is explained the context of the study by written text. The following points should be made clear to the visitor.
+In the context presentation sub-phase, the visitor is explained the context of the study by written text. The following points should be made clear to the visitor.
 \begin{itemize}
 	\item We (the team designing the study) are interested in knowing what the visitor considers are the best arguments to form a deliberated judgment on this topic, as judged by himself. Our long-term goal is to help individuals form a well-informed opinion by displaying to them arguments that tend to be considered good by many individuals, taking into account only the quality of the argument and not on the stance that the argument supports.
 	\item We have no conflict of interest and do not try to promote either diet option (contrary to our champions). \commentOC{It will strike the visitor that we seem biased towards veganism or vegetarianism: the choices are not symmetrical from the POV of a meat-lover; and no champion defend a meat-extensive diet. We should say something about this. What?}
@@ -101,11 +101,12 @@ In the context presentation phase, the visitor is explained the context of the s
 	\item He is asked whether he is willing to adopt an open mind, that is, to be ready to change his mind if given arguments that he considers good for a side that he does not consider a priori as the “right” choice. \commentOC{New proposal, to maximize our chance of observing something interesting.}
 	\item He should spend one hour and a half, (mostly) uninterrupted, on this experiment. During this time, he will have to look at videos from both sides, with a balanced time for both champions, and answer questions about his current judgment and about which arguments he finds good \commentOC{This is a new proposition. The previous version was: invited to spend as much time as he wants watching videos (without restriction of balancing the time spent for each champion) to form an opinion.} \commentOC{I propose to drop the socio-demographic questions.} 
 	\item After this hour and a half, he is free to continue exploring the videos and answering further questions in an unconstrained way.
+	\item The visitor must agree that we use the collected data (RGPD).
 \end{itemize}
 Only after the visitor has accepted those conditions can he start the controlled deliberation phase. 
 
 \subsection{Constrained deliberation}
-During the constrained deliberation phase, he can still access the explanations relating to the context presentation if he so desires, but it is not displayed prominently any more as we expect it will not be his main interest in that phase.
+During the constrained deliberation sub-phase, he can still access the explanations relating to the context presentation if he so desires, but it is not displayed prominently any more as we expect it will not be his main interest in that phase.
 
 The constrained deliberation phase is composed of \textbf{video steps} and \textbf{questionaire steps}. 
 
@@ -120,7 +121,7 @@ The step is finished with one of these possibilities.
 	\begin{itemize}
 		\item If the video is watched until the end with no navigation in the timeline, in which case the video is added at the end of $S_S$. 
 		\item The user can also click to mark the video as seen without having watched it entirely, in which case the video is also added at the end of $S_S$.
-		\item The user can also click to stop the video without marking it as seen; in which case $S_S$ is not modified and the video is added at the end of $S_T$.
+		\item The user can also click to stop the video without marking it as seen; in which case $S_S$ is not modified and the video is added at the end of $S_T$. \commentOC{What’s that?}
 	\end{itemize}
 	\item Given a video $s$, define $r(s)$ as the singleton set containing the reply video to $s$ (thus produced by the other champion than the author of $s$), if such a video exists, and $\emptyset$ otherwise. For example, $r(s_{2aba}) = \set{s_{2abab}}$ if such a video exists. At the start of a step where the list of videos seen is $S_S$, $S_N$ (for “next”) is defined as the non-seen videos among the starting videos and the videos replying to a video that has been seen, thus, $S_N = \left(\set{s_{k\alpha}, k \in \N, \alpha \in \set{a, b}} \cup \bigcup_{s \in S_S} r(s)\right) \setminus S_S$. The proposed videos in this step are defined as $S_P = S_N$; \emph{except} if the time allowed to watch one of the champions has been exhausted. The visitor has 40 minutes max to spend for each champion. Thus, if $\theta_a ≥ 40 \text{ minutes}$, $S_P$ consists in the videos of champion $b$ among $S_N$.
 	\item At any time (except when watching a video in full-screen), $i$ sees how much time he has spent watching videos of each champion.
@@ -140,7 +141,7 @@ A questionaire step is defined as asking the following questions to $i$. \commen
 For each of the “which videos” questions, $i$ is shows the list of thumbnails of videos in $S_S$, followed by the thumnails of videos he has partially seen but not marked as seen, and can check any thumnail he wants, from both champions. \commentOC{Should (or can?) order the videos?}
 
 \subsection{Free deliberation}
-After the constrained deliberation phase, after having answered any final questionaire, the visitor can watch more videos. We continue sending her to some questionaire step from time to time. This phase is similar to the constrained deliberation phase, but with no time limit.
+After the constrained deliberation sub-phase, after having answered any final questionaire, the visitor can watch more videos. We continue sending her to some questionaire step from time to time. This phase is similar to the constrained deliberation phase, but with no time limit.
 
 \section{Analysis}
 \commentOC{We should think already now about some of the analysis that we will want to do, in order to ensure that our protocol is appropriate and to list the requirements on indicators collected during the adjudication phase.}
