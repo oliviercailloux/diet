@@ -34,7 +34,7 @@ This section presents the context of the study.
 This is a draft proposal open for discussion.
  
 \subsection{Goal}
-We aim at studying how we can capture the deliberated judgment of an individual towards a complex, practical topic. The deliberated judgment of an individual towards a topic is the stance she adopts after careful examination of all relevant arguments concerning that topic.
+We aim at studying how we can capture the deliberated judgment of an individual towards a complex, practical topic. The deliberated judgment \citep{cailloux_formal_2020} of an individual towards a topic is the stance she adopts after careful examination of all relevant arguments concerning that topic. The examination is considered complete when the adopted stance is stable considering further counter-arguments.
 
 In this exploratory study, we want to try to capture deliberated judgments on a particular question, of many individuals, by confronting them to many arguments, and extract from this lessons about how to capture deliberated judgments more generally, and about the difficulties that such a process gets confronted to. 
 
@@ -54,27 +54,17 @@ To answer this question, our visitor will be able to adjust sliders on these thr
 \end{itemize}
 The sum of these three numbers must equal five.
 
-These answers permit, among others, the following positions.
-\begin{enumerate}
-	\item \label{it:vegan} The cantine should propose only vegan food every day
-	\item \label{it:four} It should propose only vegan food on four days a week and vegan and non-vegan choice on the remaining day
-	\item \label{it:one} It should propose only vegan food on one day per week and vegan and non-vegan choice on the remaining days
-	\item \label{it:zero} It should propose vegan and non-vegan choice every day
-	\item It should propose non-vegan choice every day and vegan choice on one day per week
-	\item It should propose non-vegan choice every day and no vegan choice
-\end{enumerate}
-
 \section{Collection phase}
 From now on, assume we have two champions, $C_a$ and $C_b$.
 
-We ask $C_a$ and $C_b$ for their favorite propositions, defined as $t_a$ and $t_b$ respectively as defined in \cref{sec:topic}). Hopefully, we have chosen $C_a$ and $C_b$ so that $t_a$ and $t_b$ are at opposite ends of the spectrum. \commentOC{Elodie defends number 3? Or, really, number 1?}
+We ask $C_a$ and $C_b$ for their favorite propositions, defined as $t_a$ and $t_b$ respectively as defined in \cref{sec:topic}). 
 
 We ask $C_a$ to produce a video in favor of $t_a$, and label it $s_{1a}$. We send $s_{1a}$ to $C_b$. We give $C_b$ a choice: either produce a reply video (arguing for $t_b$ against the video arguing for $t_a$), or start a new thread in favor of $t_b$, or both. In the first case, we label the argument $s_{1ab}$. In the second case, we label the argument $s_{1b}$. The scheme is then repeated. We also run a parallel scheme starting with $b$ instead of $a$.
 
 Here is a more precise description of the collection phase.
 
 \begin{itemize}
-	\item At the start of the whole procedure, both champions are fully informed about the procedure and the future use of their arguments, including about the time constraints (effectively as if they received a copy of this whole document, except possibly with a different form more suitable for easy understanding of their role).
+	\item At the start of the whole procedure, both champions are fully informed about the procedure and the future use of their arguments, thanks to discussions and through sending them a copy of this whole document.
 	\item The naming scheme is such that the last letter of a video indicate its author.
 	\item Define $\text{init}(\alpha)$, with $\alpha \in \set{a, b}$, as follows. Precondition: $C_\alpha$ has received no argument of any sort from her opponent. We ask $C_\alpha$ to produce a video in favor of $t_\alpha$, and label the resulting video $s_{1 \alpha}$.
 	\item Define $\text{next}(\alpha)$, with $\alpha \in \set{a, b}$, as one plus the greatest integer numbering a start video recorded by $\alpha$ in the whole process so far. For example, if $\alpha = b$, and if a video labeled $s_{3b}$ exists already but no video labeled $s_{4b}$ exists yet, then $\text{next}(b) = 4$.
@@ -82,7 +72,7 @@ Here is a more precise description of the collection phase.
 	\item We start with $\text{init}(a)$ and $\text{init}(b)$ in parallel, therefore obtaining $s_{1a}$ and $s_{1b}$. Define $S_{1a} = \set{s_{1a}}$ and $S_{1b} = \set{s_{1b}}$.
 	\item After having obtained a set of videos $S$, if $S ≠ \emptyset$, we run $\text{reply}(S)$, and label the set of resulting videos by suffixing the identifier of their author to the label of $S$. 
 	\item We repeat the previous step, running two threads in parallel whenever possible, until both participants think that all arguments that is important to form a deliberated judgment has been given.
-	\item When both participants have finished producing videos, we ask them to label briefly (in maximum 30 characters) each of their own videos and select an image from the video that becomes its “thumbnail”.
+	\item We ask the champions to label, in maximum 30 characters, each of their own videos and select an image from the video that becomes its “thumbnail”.
 \end{itemize}
 
 \begin{example}
@@ -99,7 +89,7 @@ Here is an example run.
 \end{example}
 
 \section{Adjudication phase}
-When the collection phase is over, we put every collected video on a web site and design everything so that the adjudication phase of the protocol can be run, as described in this section. This phase consists, for each visitor, in 
+When the collection phase is over, we put every collected video on a web site and design everything so that the adjudication phase of the protocol can be run, as described in this section. This phase consists, for each visitor, in the following.
 
 An individual $i$ comes to our web site. This visitor has to go through the following two sub-phases (and an optional third one): the \emph{context presentation} and the \emph{constrained deliberation} sub-phases; and can then optionally proceed to the \emph{free deliberation} sub-phase.
 
@@ -107,13 +97,14 @@ An individual $i$ comes to our web site. This visitor has to go through the foll
 In the context presentation sub-phase, the visitor is explained the context of the study by written text. The following points should be made clear to the visitor.
 \begin{itemize}
 	\item We (the team designing the study) are interested in knowing what the visitor considers are the best arguments to form a deliberated judgment on this topic, as judged by himself. Our long-term goal is to help individuals form a well-informed opinion by displaying to them arguments that tend to be considered good by many individuals, taking into account only the quality of the argument and not on the stance that the argument supports.
-	\item We have no conflict of interest and do not try to promote either diet option (contrary to our champions). \commentOC{It will strike the visitor that we seem biased towards veganism or vegetarianism: no champion defend a meat-extensive diet. What should we say about this?}
+%	\item We have no conflict of interest and do not try to promote either diet option (contrary to our champions). ⇒ We decided not to write this as is.	\commentOC{It will strike the visitor that we seem biased towards veganism or vegetarianism: no champion defend a meat-extensive diet. What should we say about this?}
+	\item Berlin: vegan canteen for its student (cite \hrefblue{https://www.theguardian.com/world/2019/apr/25/the-need-was-there-berlins-first-vegan-canteen-for-students-opens}{article}).  We ask the visitor: Should we do it as well?
 	\item Two well-known public figures have argued for two specific options. Those champions, contrary to us, actively try to promote one of the options.
-	\item The visitor is shown the question of the topic and the possible choices.
-	\item He is asked whether he is willing to adopt an open mind, that is, to be ready to change his mind if given arguments that he considers good for a side that he does not consider a priori as the “right” choice. \commentOC{New proposal, to maximize our chance of observing something interesting.}
-	\item He should spend one hour and a half, (mostly) uninterrupted, on this experiment. During this time, he will have to look at videos from both sides, with a balanced time for both champions, and answer questions about his current judgment and about which arguments he finds good \commentOC{This is a new proposition. The previous version was: invited to spend as much time as he wants watching videos (without restriction of balancing the time spent for each champion) to form an opinion.} 
-	\item After this hour and a half, he is free to continue exploring the videos and answering further questions in an unconstrained way.
+%	\item He is asked whether he is willing to adopt an open mind, that is, to be ready to change his mind \commentOC{change opinion} if given arguments that he considers good for a side that he does not consider a priori as the “right” choice. \commentOC{We decided that this can be naïve or counter-productive.}
+%	\item He should spend 45 minutes, (mostly) uninterrupted, on this experiment. During this time, he will have to look at videos from both sides, with a balanced time for both champions, and answer questions about his current judgment and about which arguments he finds good \commentOC{We decided not to because we have to ask the questionaire regularly anyway: we are on the internet.} 
+%	\item After this time, he is free to continue exploring the videos and answering further questions in an unconstrained way.
 	\item The visitor must agree that we use the collected data (RGPD).
+	\item The visitor is shown the question of the topic and the possible choices.
 \end{itemize}
 Only after the visitor has accepted those conditions can he start the controlled deliberation phase. 
 
@@ -141,17 +132,16 @@ The step is finished with one of these possibilities.
 \end{itemize}
 
 \subsubsection{Questionaire step}
-\commentOC{I propose to drop the socio-demographic questions.} 
+\commentOC{After two videos, we have to ask the socio-demo questions. After four videos, we have to ask to leave coordinates (e-mail and optionally, phone) and openness. Each two videos, we give feedback: fraction of arguments seen; time spent for each champion; … We ask the questionaire step lightweight, the visitor can simply click next. Write rather: from time to time, during the experiment.} 
 A questionaire step is defined as asking the following questions to $i$. \commentOC{New proposition. Previously: At each step, $i$ may click “questionaire” to go to the questionaire part. In this part he is informed that we suggest he answers these questions only after he has formed a deliberated opinion, but that he can anyway go back to the video part and come back to the questionaire whenever he wants and change his answers. I also removed several questions.}
 \commentOC{Decide how to alternate questionaire and video steps.}
 \begin{itemize}
 	\item Which answer would you choose if you had to choose now (referring to \cref{sec:topic})?
-	\item Which videos did you personally find most helpful to form a deliberated judgement about this question?
-	\item Which videos would you select for displaying to other users to help them form a deliberated judgment about this question, assuming individuals have only a short time for watching the videos?
+	\item Which videos did you personally find most helpful to form a deliberated judgement about this question? \commentOC{Better ask after each video whether she found the video useful to form a DJ (thumb up).}
 	\item Are there some arguments that you think have not been used from either champions and should have? (free text answer)
-	\item Which arguments do you think the other champion has not replied to convincingly? (free text answer) \commentOC{These two questions should be asked only at the end of the constrained deliberation phase?}
 \end{itemize}
 For each of the “which videos” questions, $i$ is shows the list of thumbnails of videos in $S_S$, followed by the thumnails of videos he has partially seen but not marked as seen, and can check any thumnail he wants, from both champions. \commentOC{Should (or can?) order the videos?}
+\commentOC{Display a graph of their evolution, or other feedback.}
 
 \subsection{Free deliberation}
 After the constrained deliberation sub-phase, after having answered any final questionaire, the visitor can watch more videos. We continue sending her to some questionaire step from time to time. This phase is similar to the constrained deliberation phase, but with no time limit.
@@ -174,5 +164,7 @@ After the constrained deliberation sub-phase, after having answered any final qu
 \begin{enumerate}
 	\item Determine and validate a procedure to build CAC models?
 \end{enumerate}
+
+\bibliography{biblio}
 \end{document}
 
